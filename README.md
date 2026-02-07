@@ -88,12 +88,13 @@ Relevancy score: Using cosine similarity and cross encoder scores.
 
 <img width="537" height="629" alt="Screenshot 2026-02-03 at 21 01 18" src="https://github.com/user-attachments/assets/76036c73-fb74-4de6-9819-dea824938634" />
 
-<img width="537" height="629" alt="Screenshot 2026-02-03 at 21 01 18" src="https://github.com/user-attachments/assets/fbe35973-903f-4f23-a508-3d8fc5cafb04" />
+<img width="974" height="1088" alt="image" src="https://github.com/user-attachments/assets/f4203a3e-33fd-4979-b44c-5a2df7e19e56" />
+
 
 ---
 
 ## How its helping: 
-- AI-assisted, recruiter decision-making/
+- AI-assisted, recruiter decision-making. 
 - Reduces time spent on sourcing -  Strongly true — summary + ranking + skills eliminate resume skimming.
 - Fairness is measurable and not assumed : The system avoids hard filters and exposes its scoring logic, making fairness observable and auditable.
 - Helping in “Should I open this resume?”
