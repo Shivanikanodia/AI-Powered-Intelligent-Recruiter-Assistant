@@ -81,14 +81,12 @@ ___
 
 <img width="852" height="130" alt="Screenshot 2025-11-06 at 16 00 45" src="https://github.com/user-attachments/assets/c6c54f71-4c18-4c74-9086-f6d29a68dccf" />
 
-Relevancy score: Using cosine similarity and cross encoder scores. 
+Relevancy score: Using feature scores, chunk level section scores and cross encoder scores. 
 --- 
 
 **Streamlit UI**
 
-<img width="537" height="629" alt="Screenshot 2026-02-03 at 21 01 18" src="https://github.com/user-attachments/assets/76036c73-fb74-4de6-9819-dea824938634" />
 
-<img width="974" height="1088" alt="image" src="https://github.com/user-attachments/assets/f4203a3e-33fd-4979-b44c-5a2df7e19e56" />
 
 
 ---
