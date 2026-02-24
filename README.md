@@ -79,7 +79,10 @@ Relevancy score: Using feature scores, chunk level section scores and cross enco
 <img width="783" height="566" alt="Screenshot 2026-02-24 at 15 40 14" src="https://github.com/user-attachments/assets/6ae37bc9-6c1b-4c41-883f-eb647c49b14a" />
 
 
-<img width="298" height="336" alt="Screenshot 2026-02-24 at 15 39 14" src="https://github.com/user-attachments/assets/bdaa6f56-ab5b-418a-ba1a-f26e2b0e5d06" />
+
+<img width="660" height="736" alt="Screenshot 2026-02-24 at 15 43 10" src="https://github.com/user-attachments/assets/c3db87ce-451f-435e-b90b-7d1b8efd130a" />
+
+
 
 
 <img width="685" height="197" alt="Screenshot 2026-02-23 at 14 28 50" src="https://github.com/user-attachments/assets/394691c8-02d2-4efb-ad90-6f0187213d04" />
