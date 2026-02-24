@@ -28,40 +28,27 @@ Resumes
 → Read & Chunk - Resume Ingestion and Text Normalisation
 → Section detection (Experience, Skills, Education)
 → Feature store for deterministic metadata filtering (location, experience, education)
-  Resume chunking (Section based) and embedding generation (Sentence Transformers) 
+
+<img width="1102" height="1030" alt="image" src="https://github.com/user-attachments/assets/e95be3d7-d411-4ba0-9b43-548167ab8710" />
+
+<img width="298" height="336" alt="Screenshot 2026-02-24 at 15 39 14" src="https://github.com/user-attachments/assets/0b6ad5d2-61ef-495b-8c38-5e741451b13f" />
+
+Resume chunking (Section based) and embedding generation (Sentence Transformers) 
   FAISS-based semantic index 
+  
 ---
+
 PHASE 2: Online (Every Query) - Retrieval, Ranking & Explanation
-→ Natural language recruiter query input
+  Natural language recruiter query input
   Bi-encoder semantic retrieval
   Chunk-to-resume score aggregation by segment. 
   Feature-based scoring
   Cross-encoder re-ranking of top candidates
   Final score based on these three.
   Evidence based summary from resume (experience, skills, gaps, strengths etc)
-→ Streamlit UI
----
+  Figma UI -
 
-#### Key Design Principles
-
-1️⃣ Offline vs Online Separation:
-
-Index construction is compute-heavy and runs once
-
-Query-time inference is fast and lightweight
-
-Prevents recomputation and improves scalability
-
-2️⃣ Deterministic Ranking, Generative Summaries:
-
-Ranking is driven by retrieval + reranking
-
-LLMs are used only for post-hoc summarization
-
-Avoids hallucinations and keeps decisions explainable
-
-
-___
+__
 
 ### Unique aspects that differentiate this from traditional ATS:
 
@@ -71,9 +58,11 @@ ___
 
 - Not brand-driven: does not rely on school/company brand, social influence, or engagement proxies.
 
-- Explainability via scores + metadata + feature signals: recruiters can see why Candidate A ranked above Candidate B using semantic match, relevance score, detected skills, and evidence-backed summaries.
+- Explainability via chunk scores + metadata + feature signals: recruiters can see why Candidate A ranked above Candidate B using relevance score, detected skills, and evidence-backed summaries.
 
-- Recruiter workflow compatible: modular pipeline that can plug into ATS workflows—retrieve → rerank → explain—without changing final decision ownership.
+- Recruiter Talent Insights: Genie operates exclusively on structured candidate metadata and does not directly query raw resume text.
+
+Genie converts NL → SQL and retrieves structured insights from Delta tables.
   
 ---
 
@@ -84,9 +73,18 @@ ___
 Relevancy score: Using feature scores, chunk level section scores and cross encoder scores. 
 --- 
 
-**Streamlit UI**
+**Figma UI** - https://smog-topaz-81345570.figma.site
 
 
+<img width="298" height="336" alt="Screenshot 2026-02-24 at 15 39 14" src="https://github.com/user-attachments/assets/bdaa6f56-ab5b-418a-ba1a-f26e2b0e5d06" />
+
+
+
+<img width="660" height="736" alt="Screenshot 2026-02-24 at 15 43 10" src="https://github.com/user-attachments/assets/82a7aa87-0380-47fc-8909-3ab4c3f90ae5" />
+
+
+
+<img width="685" height="197" alt="Screenshot 2026-02-23 at 14 28 50" src="https://github.com/user-attachments/assets/394691c8-02d2-4efb-ad90-6f0187213d04" />
 
 
 ---
