@@ -1,64 +1,88 @@
-### AI POWERED RESUME SEARCH AND RANKING SYSTEM: 
+### AI POWERED INTELLIGENT RECRUITER ASSISTANT : 
 
-To build an AI-powered resume ranking system using semantic search, chunk-level relevance scoring, and cross-encoder reranking, combined with structured features to deliver evidence-backed candidate recommendations, mirroring production-grade hiring intelligence systems.
+## Business Problem & Importance:
+-  Keyword-based ATS systems miss semantically relevant candidates
+-  No ranking or prioritization based on contextual relevance with no explanation and evidence of why a candidate ranked higher or does not rank high. 
+-  Recruiters spend excessive time opening and manually scanning resumes line by line due to resume overload in ATS systems.
+-  Skill gaps and weak evidence must be manually inferred, forcing recruiters to interpret context and relevance on their own.
+- Limited self-service analytics for recruiters
 
-## PROBLEM:
+## Example:
+Current ATS systems rely heavily on keyword matching and manual screening, leading to inefficiencies, missed qualified candidates, and limited transparency in decision-making. There is a need for a scalable, explainable and responsible AI system that enables intelligent resume matching and recruiter-facing analytics.
 
-## Challenges at recruiter level: 
-
-- Exact keyword dependency causes vocabulary mismatch ( “ML Engineer” vs “Machine Learning Engineer”), even though we test and try with so many boolean searches. 
-- No ranking or prioritization based on contextual relevance, No explanation and evidence of why a candidate matches or does not match.
-- Recruiters spend excessive time opening and manually scanning resumes line by line due to resume overload in ATS systems.
-- Skill gaps and weak evidence must be manually inferred, forcing recruiters to interpret context and relevance on their own.
-- Time to screen, shortlist, and hire increases, directly impacting hiring velocity and candidate experience.
+#### The primary user of this system is the recruiter or hiring manager performing early-stage screening.
 
 ## At candidate level: 
 Highly relevant candidates are missed because scoring is applied to entire resumes without surfacing specific supporting evidence.
 
 ## GOAL:
 
-Serve Hiring Managers and Recruiters across functions (Engineering, Global Functions, Professional Services, etc.) Let users query large resume sets by skills, experience, and Reduce time-to-screen by surfacing the most relevant candidates and summaries.
+Serve Hiring Managers and Recruiters across functions (Engineering, Global Functions, Professional Services) Let users query large resume sets by skills, experience, Education, Seniory, and Domain Preference. Reduce time-to-screen by surfacing the most relevant candidates and summaries with breakdown of why they are ranked higher. 
 
 ---
 
 ### How It Works (Architecture)
 
-PHASE 1: Offline (Run Once) Data Engineering & Indexing 
+#### PHASE 1: Offline (Run Once) Data Engineering & Indexing
+
 → Read & Chunk - Resume Ingestion and Text Normalisation
 → Resume Formatting and Removing unicode/EXTRA SPACES
-→  Date standardization 
+→ Date standardization 
 → Abbreviations expansion, Ontology mapping  and Synonym handling 
-→ Section detection (Experience, Skills, Education)
+→ Section detection (Experience, Skills, Education and NER 
 → Feature store for deterministic metadata filtering (location, experience, education)
 
-<img width="1102" height="1030" alt="image" src="https://github.com/user-attachments/assets/e95be3d7-d411-4ba0-9b43-548167ab8710" />
+<img width="1102" height="1030" alt="image" src="https://github.com/user-attachments/assets/e95be3d7-d411-4ba0-9b43-548167ab8710" /> 
+
 
 <img width="298" height="336" alt="Screenshot 2026-02-24 at 15 39 14" src="https://github.com/user-attachments/assets/0b6ad5d2-61ef-495b-8c38-5e741451b13f" />
 
-Resume chunking (Section based) and embedding generation (Sentence Transformers) 
-FAISS-based semantic index 
-  
+The individual contribution scores of each feature provide transparency into why a particular resume is ranked higher. By analyzing the weighted contribution of domain match, skill fitment, experience alignment, seniority, and education, the system can clearly indicate which attributes most influenced the ranking decision for a given job query.
+The overall Feature Score represents the aggregated weighted contribution of all structured features. This combined score directly impacts the final ranking, ensuring that resumes are evaluated based on their alignment with role-specific requirements.
+
+→ Semantic Embeddings
+→ Use pre-trained Sentence-BERT
+→ Generate embeddings for resume sections
+→ Store embeddings for retrieval in Vector DB FAISS.
+
+Note: Section-level embeddings improve retrieval precision by aligning query intent with relevant resume segments rather than the entire document.
+
+
 ---
 
-PHASE 2: Online (Every Query) - Retrieval, Ranking & Explanation:
+####  PHASE 2: Online (Every Query) - Retrieval, Ranking & Explanation:
 
   - Natural language recruiter query input
-  - Bi-encoder semantic retrieval
+  - The query is converted into an embedding and compared against the FAISS index of resume embeddings for similarity search.
+  - FAISS retrieves Top-N semantically similar resumes using bi-encoder. 
   - Chunk-to-resume score aggregation by segment. 
   - Feature-based scoring using metadata stored after NLP Processing. 
   - Cross-encoder re-ranking of top candidates
-  
-Final score based on feature computed, cross encoder re- ranking and section aware chunk level scoring which uses customized weightage templates for different roles depending on Hiring Requirement and Role. and Evidence based summary from resume (experience, skills, gaps, strengths etc) depending on 
 
-__
+→  For retrieved candidates:
+→ Chunk Similarity: Query matched against Experience, Skills, and Projects sections.
+→ Feature-Based Scoring: Skill overlap, experience alignment, domain match, seniority match, gap penalty.
+→ Cross-Encoder Re-Ranking (Top-K): Joint query–resume evaluation for deep contextual relevance.
+
+Final candidate scores are generated using a hybrid evaluation framework that combines feature computation, cross-encoder re-ranking, and section-aware chunk-level scoring. The section-aware scoring mechanism applies customized weightage templates tailored to specific roles and hiring requirements.
+The system dynamically adjusts the importance of resume sections (such as experience, skills, domain expertise, education, and location) based on the role being evaluated.
+
+#### For example:
+
+- Business Analyst roles: Responsibilities and demonstrated impact may carry greater weight than education or domain specialization.
+
+- Data Scientist roles: Technical skills, hands-on experience, and domain expertise may be prioritized over factors such as location or formal education.
+
+Using these customizable weightage templates, the system aligns scoring with recruiter priorities. It then generates evidence-based summaries grounded directly in the candidate’s resume, highlighting experience, skills, strengths, gaps, and overall role fit.
+
 
 ### Unique aspects that differentiate this from traditional ATS:
 
-- Recruiters can see why Candidate A ranked above Candidate B using relevance score, detected skills, and evidence-backed summaries.
+- Recruiters can see why Candidate A ranked above Candidate B using relevance score, detected skills, experience alignment.
 
 - Chunk-level scoring for resume sections: reduces resume length bias and focuses ranking on query relevant sections.
 
-- Transparency by design: surfaces both strengths and gaps/weak evidence so recruiters understand tradeoffs.
+- Transparency by design: surfaces both strengths, skills, experience  and gaps evidence so recruiters understand tradeoffs.
 
 - Explainability and summaries via embeddings + metadata + feature signals and prompt engineering.
 
@@ -70,7 +94,6 @@ __
 
 <img width="852" height="130" alt="Screenshot 2025-11-06 at 16 00 45" src="https://github.com/user-attachments/assets/c6c54f71-4c18-4c74-9086-f6d29a68dccf" />
 
-Relevancy score: Using feature scores, chunk level section scores and cross encoder scores. 
 --- 
 
 **Figma UI** - https://smog-topaz-81345570.figma.site
@@ -81,7 +104,6 @@ Relevancy score: Using feature scores, chunk level section scores and cross enco
 
 
 <img width="660" height="736" alt="Screenshot 2026-02-24 at 15 43 10" src="https://github.com/user-attachments/assets/c3db87ce-451f-435e-b90b-7d1b8efd130a" />
-
 
 
 
@@ -100,10 +122,11 @@ Relevancy score: Using feature scores, chunk level section scores and cross enco
 
 
 ## Future Work: 
-- Comparison from baseline (TF-IDF cosine similarity and boolean searches)
+- Setting up comparsion benchmarks between RAG, Cross Encoders and structured features using MLflow tuning knobs. 
+- Multiple Prompt Engineering templates for Mult diverse roles in enterprise systems
+- Using Responsbile AI - LLMs as Judge - Prompt Injection to safeguard the sensitive information from LLM.
 - Precision@k
 - Reduction of False Positives
-- Multi-query to let user know if missing out on a candidate due to hard constraints.
   
 ## Technology Stack
 
