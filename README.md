@@ -24,8 +24,10 @@ Serve Hiring Managers and Recruiters across functions (Engineering, Global Funct
 ### How It Works (Architecture)
 
 PHASE 1: Offline (Run Once) Data Engineering & Indexing 
-Resumes
 → Read & Chunk - Resume Ingestion and Text Normalisation
+→ Resume Formatting and Removing unicode/EXTRA SPACES
+→  Date standardization 
+→ Abbreviations expansion, Ontology mapping  and Synonym handling 
 → Section detection (Experience, Skills, Education)
 → Feature store for deterministic metadata filtering (location, experience, education)
 
@@ -34,36 +36,34 @@ Resumes
 <img width="298" height="336" alt="Screenshot 2026-02-24 at 15 39 14" src="https://github.com/user-attachments/assets/0b6ad5d2-61ef-495b-8c38-5e741451b13f" />
 
 Resume chunking (Section based) and embedding generation (Sentence Transformers) 
-  FAISS-based semantic index 
+FAISS-based semantic index 
   
 ---
 
-PHASE 2: Online (Every Query) - Retrieval, Ranking & Explanation
-  Natural language recruiter query input
-  Bi-encoder semantic retrieval
-  Chunk-to-resume score aggregation by segment. 
-  Feature-based scoring
-  Cross-encoder re-ranking of top candidates
-  Final score based on these three.
-  Evidence based summary from resume (experience, skills, gaps, strengths etc)
-  Figma UI -
+PHASE 2: Online (Every Query) - Retrieval, Ranking & Explanation:
+
+  - Natural language recruiter query input
+  - Bi-encoder semantic retrieval
+  - Chunk-to-resume score aggregation by segment. 
+  - Feature-based scoring using metadata stored after NLP Processing. 
+  - Cross-encoder re-ranking of top candidates
+  
+Final score based on feature computed, cross encoder re- ranking and section aware chunk level scoring which uses customized weightage templates for different roles depending on Hiring Requirement and Role. and Evidence based summary from resume (experience, skills, gaps, strengths etc) depending on 
 
 __
 
 ### Unique aspects that differentiate this from traditional ATS:
 
-- Chunk-level scoring for sections: reduces resume length bias and focuses ranking on strongest query-relevant evidence.
+- Recruiters can see why Candidate A ranked above Candidate B using relevance score, detected skills, and evidence-backed summaries.
+
+- Chunk-level scoring for resume sections: reduces resume length bias and focuses ranking on query relevant sections.
 
 - Transparency by design: surfaces both strengths and gaps/weak evidence so recruiters understand tradeoffs.
 
-- Not brand-driven: does not rely on school/company brand, social influence, or engagement proxies.
-
-- Explainability via chunk scores + metadata + feature signals: recruiters can see why Candidate A ranked above Candidate B using relevance score, detected skills, and evidence-backed summaries.
+- Explainability and summaries via embeddings + metadata + feature signals and prompt engineering.
 
 - Recruiter Talent Insights: Genie operates exclusively on structured candidate metadata and does not directly query raw resume text.
 
-Genie converts NL → SQL and retrieves structured insights from Delta tables.
-  
 ---
 
 **Evaluation Metrics:**::
