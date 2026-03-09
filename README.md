@@ -25,11 +25,11 @@ Serve Hiring Managers and Recruiters across functions (Engineering, Global Funct
 
 #### PHASE 1: Offline (Run Once) Data Engineering & Indexing
 
-→ Read & Chunk - Resume Ingestion and Text Normalisation
-→ Resume Formatting and Removing unicode/EXTRA SPACES
+→ Read & Chunk - Resume Ingestion 
+→ Removing unicode/EXTRA SPACES
 → Date standardization 
-→ Abbreviations expansion, Ontology mapping  and Synonym handling 
 → Section detection (Experience, Skills, Education and NER 
+→ Abbreviations expansion, Ontology mapping  and Synonym handling, Text Normalisation 
 → Feature store for deterministic metadata filtering (location, experience, education)
 
 <img width="1102" height="1030" alt="image" src="https://github.com/user-attachments/assets/e95be3d7-d411-4ba0-9b43-548167ab8710" /> 
@@ -40,13 +40,14 @@ Serve Hiring Managers and Recruiters across functions (Engineering, Global Funct
 The individual contribution scores of each feature provide transparency into why a particular resume is ranked higher. By analyzing the weighted contribution of domain match, skill fitment, experience alignment, seniority, and education, the system can clearly indicate which attributes most influenced the ranking decision for a given job query.
 The overall Feature Score represents the aggregated weighted contribution of all structured features. This combined score directly impacts the final ranking, ensuring that resumes are evaluated based on their alignment with role-specific requirements.
 
+### PHASE 2 : Offline - Embeddings using Sentence Transformers:
+
 → Semantic Embeddings
 → Use pre-trained Sentence-BERT
 → Generate embeddings for resume sections
 → Store embeddings for retrieval in Vector DB FAISS.
 
 Note: Section-level embeddings improve retrieval precision by aligning query intent with relevant resume segments rather than the entire document.
-
 
 ---
 
