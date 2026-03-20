@@ -51,7 +51,7 @@ It allows recruiters to query large resume datasets using natural language and s
 4. Scores are aggregated at resume level
 5. Feature-based scoring evaluates structured signals
 6. Cross-encoder re-ranks top candidates
-7. System generates explainable summaries
+7. System generates controlled explainable summaries
 
 ---
 
@@ -64,8 +64,6 @@ It allows recruiters to query large resume datasets using natural language and s
 * Enables deterministic filtering and structured scoring
 * Supports recruiter-facing analytics and explainability
 * Integrated Databricks Genie for natural language querying over candidate metadata
-
-### Phase 1: Offline Data Processing & Indexing
 
 ### Phase 1: Offline Data Processing & Indexing
 
@@ -137,7 +135,7 @@ Custom weight templates adapt scoring based on role:
 * Sentence-Transformers – embeddings
 * Cross-Encoder (MiniLM) – re-ranking
 * Streamlit – UI
-* Ollama (Llama 3) – optional summarization
+* Ollama (Llama 3) –  summarization
 * Databricks (Delta Lake) – structured data storage and feature engineering
 * Semantic Data Models – candidate feature representation for scoring and analytics
 * Databricks Genie – natural language querying over structured recruiter insights
@@ -202,8 +200,9 @@ python -m streamlit run app.py
 * Query embedding generation
 * FAISS semantic retrieval
 * Resume-level aggregation
+* Features Computed using metadata from delta tables 
 * Cross-encoder re-ranking
-* Optional LLM summarization
+* Controlled LLM summarization
 
 ---
 
