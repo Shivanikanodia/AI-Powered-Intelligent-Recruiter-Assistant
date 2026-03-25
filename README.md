@@ -69,21 +69,31 @@ It allows recruiters to query large resume datasets using natural language and s
 
 * Resume ingestion and cleaning (unicode removal, formatting)
 * Section detection (Experience, Skills, Education)
-* Named Entity Recognition (NER)
-* Synonym handling and ontology mapping
-* Feature extraction (experience, domain, education, location)
-* Storage in structured feature store
 
+### Named Entity Recognition (NER) and Synonym handling and ontology mapping
 
+1. 
 <img width="495" height="800" alt="Screenshot 2026-03-19 at 16 25 31" src="https://github.com/user-attachments/assets/08814023-8369-43de-b351-8ce41d98d1f4" />
 
+2. 
 <img width="650" height="738" alt="Screenshot 2026-03-19 at 16 25 56" src="https://github.com/user-attachments/assets/8ee40c0b-1be9-4191-b376-0c0bee044216" />
 
+3. 
 <img width="678" height="490" alt="Screenshot 2026-03-19 at 16 25 17" src="https://github.com/user-attachments/assets/353518bb-19f7-43d7-8af6-c4b380b51857" />
+
+### Feature extraction (experience, domain, education, location) and Storage in delta live table in UC.
+
+#### Entity-relationship Diagram and Data Models - 
 
 <img width="646" height="456" alt="image" src="https://github.com/user-attachments/assets/3b55a914-1a61-4da1-979f-02717034f769" />
 
+#### Unity Catalog - Delta tables - 
+
 <img width="919" height="688" alt="Screenshot 2026-03-13 at 18 45 49" src="https://github.com/user-attachments/assets/afb9e1cb-420e-4985-abb3-7066eb80d9a0" />
+
+### recruiter self-service analytics for talent insights 
+
+<img width="1376" height="566" alt="image" src="https://github.com/user-attachments/assets/f274b2e4-68ff-49b4-9764-c093909c4186" />
 
 
 ### Phase 2: Embeddings Generation
@@ -99,18 +109,12 @@ It allows recruiters to query large resume datasets using natural language and s
 * Chunk-level similarity scoring
 * Resume-level aggregation
 * Feature-based scoring:
-
   * Skill overlap
   * Experience alignment
   * Domain match
   * Seniority fit
   * Gap penalties
 * Cross-encoder re-ranking (Top-K)
-
-
-
-<img width="1376" height="566" alt="image" src="https://github.com/user-attachments/assets/f274b2e4-68ff-49b4-9764-c093909c4186" />
-
 
 ### Final Scoring
 
