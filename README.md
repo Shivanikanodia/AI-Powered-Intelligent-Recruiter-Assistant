@@ -70,7 +70,7 @@ It allows recruiters to query large resume datasets using natural language and s
 * Resume ingestion and cleaning (unicode removal, formatting)
 * Section detection (Experience, Skills, Education)
 
-### * Named Entity Recognition (NER) and Synonym handling and ontology mapping
+### * Named Entity Recognition (NER), Synonym handling and Ontology Mapping
 
 
 
@@ -91,13 +91,13 @@ It allows recruiters to query large resume datasets using natural language and s
 
 
 
-### Feature extraction (experience, domain, education, location) and Storage in delta live table in UC (Entity-relationship Diagram and Data Modelling) 
+### Feature extraction (experience, domain, education, location) and storage in delta live table (ER Diagram and Data Models) 
 
 <img width="646" height="456" alt="image" src="https://github.com/user-attachments/assets/3b55a914-1a61-4da1-979f-02717034f769" />
 
 <img width="919" height="688" alt="Screenshot 2026-03-13 at 18 45 49" src="https://github.com/user-attachments/assets/afb9e1cb-420e-4985-abb3-7066eb80d9a0" />
 
-### Recruiter Self-service analytics for talent insights. 
+### Recruiter Self-service analytics for talent insights 
 
 <img width="1376" height="566" alt="image" src="https://github.com/user-attachments/assets/f274b2e4-68ff-49b4-9764-c093909c4186" />
 
@@ -138,7 +138,7 @@ Custom weight templates adapt scoring based on role:
 ---
 ### Prototype:
 
-#### HR/Recruiter/HM puts a query:
+#### HR/Recruiter/HM puts a query.
 
 <img width="2614" height="1448" alt="image" src="https://github.com/user-attachments/assets/0eb1f3aa-7a62-44fe-8a75-a94c5ed2e13e" />
 
