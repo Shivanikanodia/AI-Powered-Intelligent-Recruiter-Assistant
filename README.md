@@ -55,17 +55,8 @@ It allows recruiters to query large resume datasets using natural language and s
 
 ---
 
-## 🔍 Detailed Architecture
+## 🔍 Detailed Architecture:
 
-### Data Platform & Semantic Layer
-
-* Built on Databricks with Delta Lake for scalable data storage
-* Designed semantic data models for candidate features (skills, experience, domain, seniority, education)
-* Enables deterministic filtering and structured scoring
-* Supports recruiter-facing analytics and explainability
-* Integrated Databricks Genie for natural language querying over candidate metadata
-
-  
 <img width="799" height="750" alt="Screenshot 2026-03-25 at 12 29 15" src="https://github.com/user-attachments/assets/63591997-881c-4c6c-9eb7-f5fdbe51bb12" />
 
 
