@@ -65,6 +65,10 @@ It allows recruiters to query large resume datasets using natural language and s
 * Supports recruiter-facing analytics and explainability
 * Integrated Databricks Genie for natural language querying over candidate metadata
 
+  
+<img width="799" height="750" alt="Screenshot 2026-03-25 at 12 29 15" src="https://github.com/user-attachments/assets/63591997-881c-4c6c-9eb7-f5fdbe51bb12" />
+
+
 ### Phase 1: Offline Data Processing & Indexing
 
 * Resume ingestion and cleaning (unicode removal, formatting)
