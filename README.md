@@ -74,6 +74,18 @@ It allows recruiters to query large resume datasets using natural language and s
 * Feature extraction (experience, domain, education, location)
 * Storage in structured feature store
 
+
+<img width="495" height="800" alt="Screenshot 2026-03-19 at 16 25 31" src="https://github.com/user-attachments/assets/08814023-8369-43de-b351-8ce41d98d1f4" />
+
+<img width="650" height="738" alt="Screenshot 2026-03-19 at 16 25 56" src="https://github.com/user-attachments/assets/8ee40c0b-1be9-4191-b376-0c0bee044216" />
+
+<img width="678" height="490" alt="Screenshot 2026-03-19 at 16 25 17" src="https://github.com/user-attachments/assets/353518bb-19f7-43d7-8af6-c4b380b51857" />
+
+<img width="646" height="456" alt="image" src="https://github.com/user-attachments/assets/3b55a914-1a61-4da1-979f-02717034f769" />
+
+<img width="919" height="688" alt="Screenshot 2026-03-13 at 18 45 49" src="https://github.com/user-attachments/assets/afb9e1cb-420e-4985-abb3-7066eb80d9a0" />
+
+
 ### Phase 2: Embeddings Generation
 
 * Sentence-BERT used for semantic embeddings
@@ -95,6 +107,11 @@ It allows recruiters to query large resume datasets using natural language and s
   * Gap penalties
 * Cross-encoder re-ranking (Top-K)
 
+
+
+<img width="1376" height="566" alt="image" src="https://github.com/user-attachments/assets/f274b2e4-68ff-49b4-9764-c093909c4186" />
+
+
 ### Final Scoring
 
 Hybrid scoring combining:
@@ -109,8 +126,22 @@ Custom weight templates adapt scoring based on role:
 * **Data Scientist**: Skills & domain expertise prioritized
 
 ---
+### Prototype:
 
-## 🔎 Explainability & Transparency
+#### HR/Recruiter/HM puts a query:
+
+<img width="2614" height="1448" alt="image" src="https://github.com/user-attachments/assets/0eb1f3aa-7a62-44fe-8a75-a94c5ed2e13e" />
+
+#### RAG Retrives evidence from resume using meta data, embeddings and Controlled Prompt Engineering, Highlights strengths and gaps with supporting evidence.  
+
+<img width="762" height="647" alt="Screenshot 2026-03-15 at 22 46 30" src="https://github.com/user-attachments/assets/8435cd3b-e120-4b05-956b-58ebdfc02cf4" />
+
+#### Breakdown of why this candidate is ranked higher using structured features and Ranking logic.  
+
+<img width="736" height="183" alt="Screenshot 2026-03-15 at 22 46 39" src="https://github.com/user-attachments/assets/5e1ddd26-2cd3-4e4c-9f0a-c9876d2e9fe4" />
+
+
+## 🔎 Explainability & Transparency:
 
 * Displays contribution of each feature (skills, experience, domain, etc.)
 * Shows why one candidate ranks higher than another
