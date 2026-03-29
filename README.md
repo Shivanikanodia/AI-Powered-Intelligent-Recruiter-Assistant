@@ -65,7 +65,7 @@ It allows recruiters to query large resume datasets using natural language and s
 * Resume ingestion and cleaning (unicode removal, formatting)
 * Section detection (Experience, Skills, Education)
 
-### * Named Entity Recognition (NER), Synonym handling and Ontology Mapping
+### Named Entity Recognition (NER), Synonym handling and Ontology Mapping
 
 
 
