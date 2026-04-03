@@ -7,7 +7,7 @@ An explainable AI system for semantic resume matching and recruiter-facing candi
 ## 🚀 Business Problem
 
 * Keyword-based ATS systems miss semantically relevant candidates
-* No transparent ranking or explanation of candidate relevance
+* No transparent ranking or explanation of candidate relevance. 
 * Recruiters spend significant time manually scanning resumes
 * Skill gaps and contextual relevance must be inferred manually
 * Limited recruiter self-service analytics
@@ -16,7 +16,7 @@ An explainable AI system for semantic resume matching and recruiter-facing candi
 
 ## 💡 Solution Overview
 
-This system enables intelligent resume retrieval and ranking using a hybrid approach that combines semantic search, structured feature scoring, and deep re-ranking.
+This system converts unstructured data into structured data using NLP and created meta data and structured features, uses RAG and Cross Encoder Re-Ranking as hybrid approach that combines semantic search and deep re-ranking.
 
 It allows recruiters to query large resume datasets using natural language and surfaces the most relevant candidates along with explainable insights on why they are ranked higher.
 
@@ -37,7 +37,6 @@ It allows recruiters to query large resume datasets using natural language and s
 
 * ⏱️ Reduces resume screening time from hours to seconds
 * 🎯 Improves candidate quality via semantic matching
-* ⚖️ Enables transparent and auditable decision-making
 * 📈 Scales across thousands of resumes
 * 🤝 Supports recruiter decision-making (not replaces it)
 
@@ -45,13 +44,29 @@ It allows recruiters to query large resume datasets using natural language and s
 
 ## 🧠 How It Works (High-Level)
 
-1. Recruiter enters a natural language query
-2. Query is converted into embeddings
+1. Recruiter enters a natural language query and its converted into embeddings. 
+2. Query detects right resume sections from governed delta tables 
 3. FAISS retrieves semantically similar resume sections
-4. Scores are aggregated at resume level
-5. Feature-based scoring evaluates structured signals
+4. Scores are aggregated at resume level using top k max pooling. 
+5. Feature-based scoring evaluates structured hiring signals (skill match, domain mismatch, Experience Alignment etc) 
 6. Cross-encoder re-ranks top candidates
-7. System generates controlled explainable summaries
+7. System generates controlled explainable summaries using AI Grounded Prompts
+
+## 🔄 What Happens During Search
+
+* Query embedding generation
+* FAISS semantic retrieval
+* Resume-level aggregation
+* Features Computed using metadata from delta tables 
+* Cross-encoder re-ranking
+* Controlled LLM summarization
+
+Built a hybrid system using Sentence-BERT + FAISS for semantic retrieval - and performed section level resume chunking, for effective retrieval and ranking. 
+Added structured meta data tables from resume (skills, experience, domain) using NLP to convert unstructured data to structured one - delta lake, normalised using ontology mapping, as resume structure varies and stored each step for lineage tracking. 
+Computed hiring signals for decision transparency (skills match %, Seniority alignment, Experience alignment, and domain match). 
+Implemented cross-encoder re-ranking using weighted section scores for deep contextual relevance and to improve candidate matching depending on role. 
+Used controlled prompting to generate grounded summaries.
+
 
 ---
 
@@ -60,30 +75,22 @@ It allows recruiters to query large resume datasets using natural language and s
 <img width="799" height="750" alt="Screenshot 2026-03-25 at 12 29 15" src="https://github.com/user-attachments/assets/63591997-881c-4c6c-9eb7-f5fdbe51bb12" />
 
 
-### Phase 1: Offline Data Processing & Indexing
+### Phase 1: Offline Resume Processing & Indexing
 
-* Resume ingestion and cleaning (unicode removal, formatting)
-* Section detection (Experience, Skills, Education)
+*  Ingested resumes using pdfplumer and used json dumps for creating JSON Resumes. 
+*  Performed resume cleaning (removed whitespaces,  multiple new lines, ASCII & Unicodes and fixed formatting )
+*   Section detection (Experience, Skills, Education) and  performed entity extraction using spacy and nltk. 
 
-### Named Entity Recognition (NER), Synonym handling and Ontology Mapping
-
-
+### Abbreviation Expansion, Synonym handling and Ontology Mapping using below tables: 
 
 
 <img width="495" height="800" alt="Screenshot 2026-03-19 at 16 25 31" src="https://github.com/user-attachments/assets/08814023-8369-43de-b351-8ce41d98d1f4" />
 
 
-
-
-
 <img width="650" height="738" alt="Screenshot 2026-03-19 at 16 25 56" src="https://github.com/user-attachments/assets/8ee40c0b-1be9-4191-b376-0c0bee044216" />
 
 
-
-
-
 <img width="678" height="490" alt="Screenshot 2026-03-19 at 16 25 17" src="https://github.com/user-attachments/assets/353518bb-19f7-43d7-8af6-c4b380b51857" />
-
 
 
 ### Feature extraction (experience, domain, education, location) and storage in delta live table (ER Diagram and Data Models) 
@@ -91,10 +98,6 @@ It allows recruiters to query large resume datasets using natural language and s
 <img width="646" height="456" alt="image" src="https://github.com/user-attachments/assets/3b55a914-1a61-4da1-979f-02717034f769" />
 
 <img width="919" height="688" alt="Screenshot 2026-03-13 at 18 45 49" src="https://github.com/user-attachments/assets/afb9e1cb-420e-4985-abb3-7066eb80d9a0" />
-
-### Recruiter Self-service analytics for talent insights 
-
-<img width="1376" height="566" alt="image" src="https://github.com/user-attachments/assets/f274b2e4-68ff-49b4-9764-c093909c4186" />
 
 
 ### Phase 2: Embeddings Generation
@@ -107,25 +110,27 @@ It allows recruiters to query large resume datasets using natural language and s
 
 * Query embedding generation
 * FAISS retrieval (Top-N candidates)
-* Chunk-level similarity scoring
-* Resume-level aggregation
-* Feature-based scoring:
+* Chunk-level similarity scoring and  Resume-level aggregation
+
+ 
+### Feature-based scoring for LLM to reason and retrive:
+  
   * Skill overlap
   * Experience alignment
   * Domain match
   * Seniority fit
   * Gap penalties
-* Cross-encoder re-ranking (Top-K)
+  * 
 
-### Final Scoring
+### Cross-encoderre-ranking on  (Top-K)
 
-Hybrid scoring combining:
+###  Comparsion of Scores betwween :
 
-* Semantic similarity
-* Feature-based signals
-* Cross-encoder outputs
+* Semantic similarity - RAG only
+* Cross-encoder outputs + RAG
+* * Feature-based signals + Cross Encoder outputs + RAG 
 
-Custom weight templates adapt scoring based on role:
+""Custom weight templates adapt scoring based on role""
 
 * **Business Analyst**: Experience & impact prioritized
 * **Data Scientist**: Skills & domain expertise prioritized
@@ -137,11 +142,11 @@ Custom weight templates adapt scoring based on role:
 
 <img width="2614" height="1448" alt="image" src="https://github.com/user-attachments/assets/0eb1f3aa-7a62-44fe-8a75-a94c5ed2e13e" />
 
-#### RAG Retrives evidence from resume using meta data, embeddings and Controlled Prompt Engineering, Highlights strengths and gaps with supporting evidence.  
+#### FAISS Retrives relevant information from resume using embeddings and performed reasoning using controlled AI Prompts, highlights strengths and gaps with supporting evidence.  
 
 <img width="762" height="647" alt="Screenshot 2026-03-15 at 22 46 30" src="https://github.com/user-attachments/assets/8435cd3b-e120-4b05-956b-58ebdfc02cf4" />
 
-#### Breakdown of why this candidate is ranked higher using structured features and Ranking logic.  
+#### Breakdown of why this candidate is ranked higher using structured features and ranking logic.  
 
 <img width="736" height="183" alt="Screenshot 2026-03-15 at 22 46 39" src="https://github.com/user-attachments/assets/5e1ddd26-2cd3-4e4c-9f0a-c9876d2e9fe4" />
 
@@ -231,24 +236,13 @@ python -m streamlit run app.py
 
 ---
 
-## 🔄 What Happens During Search
-
-* Query embedding generation
-* FAISS semantic retrieval
-* Resume-level aggregation
-* Features Computed using metadata from delta tables 
-* Cross-encoder re-ranking
-* Controlled LLM summarization
-
----
-
 ## 📈 Scoring Explained
 
 * FAISS similarity → initial retrieval
 * Cross-encoder → final ranking signal
 * Scores are relative (ranking matters more than raw values)
 
----
+--
 
 ## 🔮 Future Work
 
