@@ -1,74 +1,37 @@
-# AI-Powered Intelligent Recruiter Assistant
+
+#### AI-Powered Intelligent Recruiter Assistant
 
 An explainable AI system for semantic resume matching and recruiter-facing candidate ranking, designed to reduce manual screening time and improve candidate discovery beyond traditional ATS systems.
 
----
+#### 🚀 Business Problem
+Keyword-based ATS systems fail to capture semantic relevance
+Lack of transparent ranking makes candidate evaluation unclear
+Recruiters spend significant time manually reviewing resumes
+Skill gaps and contextual fit require manual interpretation
+Limited support for recruiter-driven analytics and insights
 
-## 🚀 Business Problem
+#### 💡 Solution Overview
 
-- Keyword-based ATS systems miss semantically relevant candidates  
-- No transparent ranking or explanation of candidate relevance  
-- Recruiters spend significant time manually scanning resumes  
-- Skill gaps and contextual relevance must be inferred manually  
-- Limited recruiter self-service analytics  
+This system transforms unstructured resume data into structured, queryable metadata using NLP techniques, enabling consistent processing across diverse formats.
 
----
+It leverages semantic retrieval and hybrid ranking to identify the most relevant candidates. By combining embedding-based search with structured feature scoring and re-ranking, the system evaluates candidates on skills, experience, domain alignment, and seniority.
 
-## 💡 Solution Overview
+The platform also supports natural language queries and generates grounded, evidence-based summaries to help recruiters quickly assess candidate fit.
 
-This system converts unstructured resume data into structured metadata using NLP techniques, handling diverse unstructured documents with varying formats and layouts, enabling efficient search, ranking, and explainability.
+#### 💼 Business Impact
+⏱️ Significantly reduces resume screening time
+🎯 Improves candidate quality through context-aware matching
+📈 Scales efficiently across large candidate datasets
+🤝 Enhances recruiter decision-making with transparent insights
 
-It combines semantic retrieval (Sentence-BERT + FAISS) with cross-encoder re-ranking and structured feature scoring to improve candidate matching.
-
-The pipeline supports natural language queries from recruiters and returns the most relevant candidates along with transparent hiring signals (e.g., skill match, experience alignment, seniority fit, and domain relevance).
-
----
-
-## ⭐ Key Features
-
-- Semantic search using Sentence-BERT (beyond keyword matching)  
-- Hybrid ranking: FAISS + feature scoring + cross-encoder re-ranking  
-- Section-level chunking for precise matching  
-- Explainable scoring (skills, experience, domain, seniority, education)  
-- Evidence-based candidate summaries  
-- Recruiter analytics using structured metadata  
-- End-to-end pipeline supporting multi-stage reasoning and explainable ranking  
-
----
-
-## 💼 Business Impact
-
-- ⏱️ Reduces resume screening time from hours to seconds  
-- 🎯 Improves candidate quality via semantic matching  
-- 📈 Scales across thousands of resumes  
-- 🤝 Supports recruiter decision-making (not replaces it)  
-
----
-
-## 🧠 How It Works (High-Level)
-
-1. Recruiter enters a natural language query, which is converted into embeddings  
-2. Query retrieves relevant resume sections from governed Delta tables  
-3. FAISS retrieves semantically similar resume sections  
-4. Scores are aggregated at the resume level using top-K max pooling  
-5. Feature-based scoring evaluates structured hiring signals (skill match, domain match, experience alignment, seniority fit)  
-6. Cross-encoder re-ranks top candidates  
-7. System generates controlled, explainable summaries using grounded prompts  
-
-The system follows a multi-stage reasoning pipeline, where retrieval, feature computation, re-ranking, and summarization progressively refine candidate relevance.
-
-Structured features and cross-encoder outputs guide context-aware reasoning, allowing the system to evaluate candidate relevance beyond surface-level similarity.
-
----
-
-## 🔄 What Happens During Search
-
-- Query embedding generation  
-- FAISS semantic retrieval  
-- Resume-level aggregation  
-- Feature computation using metadata from Delta tables  
-- Cross-encoder re-ranking  
-- Controlled LLM summarization  
+#### 🧠 How It Works (High-Level)
+Recruiter submits a natural language query
+Query is converted into embeddings for semantic search
+Relevant resume sections are retrieved using FAISS
+Section-level results are aggregated to compute resume-level relevance
+Structured feature scoring evaluates candidate fit across key dimensions
+Cross-encoder re-ranks top candidates for improved precision
+Controlled LLM generates concise, evidence-based candidate summaries
 
 ---
 
@@ -95,69 +58,44 @@ These samples help demonstrate how the system performs across different candidat
 
 ---
 
-## 🔍 Detailed Architecture
-
-![Architecture](https://github.com/user-attachments/assets/63591997-881c-4c6c-9eb7-f5fdbe51bb12)
-
----
+### 🔍 Detailed Architecture
 
 ### Phase 1: Offline Resume Processing & Indexing
 
-- Ingest resumes using `pdfplumber` and convert them into structured JSON  
-- Perform resume cleaning (whitespace, formatting, ASCII/Unicode fixes)  
-- Section detection (Experience, Skills, Education)  
-- Entity extraction using spaCy and NLTK  
+- Ingest resumes using pdfplumber and convert them into structured JSON
+-Perform cleaning (whitespace normalization, formatting fixes, Unicode handling)
+- Detect key sections (Experience, Skills, Education)
+- Extract entities using spaCy and NLTK
+- Normalization & Ontology Mapping
+- Expand abbreviations and resolve synonyms
+- Map skills to a predefined ontology for consistent representation
+- Feature Engineering & Storage
+- Derive structured features: experience, domain, education, location
+- Store in Delta Live Tables with lineage tracking
 
-#### Normalization & Ontology Mapping
-
-- Abbreviation expansion and synonym handling  
-- Ontology-based normalization for consistent skill representation  
-
-#### Feature Engineering & Storage
-
-- Extract features: experience, domain, education, location  
-- Store in Delta Live Tables with lineage tracking  
-
-![Data Model](https://github.com/user-attachments/assets/3b55a914-1a61-4da1-979f-02717034f769)  
-![ER Diagram](https://github.com/user-attachments/assets/afb9e1cb-420e-4985-abb3-7066eb80d9a0)
-
----
-
-### Phase 2: Embeddings Generation (Retrieval Layer)
-
-- Sentence-BERT for semantic embeddings  
-- Section-level embeddings for higher precision  
-- Stored in FAISS vector database  
-
----
+### Phase 2: Embeddings & Retrieval Index
+Generate section-level embeddings using Sentence-BERT
+Store embeddings in FAISS for efficient similarity search
 
 ### Phase 3: Online Retrieval & Ranking
-
 #### 🔍 Retrieval
+Convert recruiter query into embeddings
+Retrieve top-N relevant resume sections from FAISS
+Aggregate section-level matches into resume-level relevance scores
 
-- Query embedding generation  
-- FAISS retrieval (Top-N candidates)  
-- Chunk-level similarity scoring and resume-level aggregation  
+#### 🧠 Scoring & Re-Ranking
+Compute structured feature scores:
 
-#### 🧠 Reasoning
+Skill overlap
+Experience alignment
+Domain relevance
+Seniority fit
+Gap penalties
 
-- Feature-based scoring:
-  - Skill overlap  
-  - Experience alignment  
-  - Domain match  
-  - Seniority fit  
-  - Gap penalties  
 
-- Cross-encoder re-ranking for deep contextual understanding  
-- Role-specific weighted scoring  
-
----
-
-**Custom weight templates:**
-
-- **Business Analyst** → Experience & impact prioritized  
-- **Data Scientist** → Skills & domain expertise prioritized  
-
+🎯 Role-Specific Weighting
+Business Analyst → Higher weight on experience and business impact
+Data Scientist → Higher weight on technical skills and domain expertise
 ---
 
 ## 🧪 Prototype
@@ -219,17 +157,17 @@ The system was evaluated across latency, ranking quality, and reliability.
 
 ### Notes
 
-- **Relevance Score** represents the semantic similarity between query and retrieved candidates after ranking  
+- Relevance Score represents the semantic similarity between query and retrieved candidates after ranking  
 - Low error rate indicates stable pipeline execution  
 - Latency includes retrieval, re-ranking, and summary generation
 
-- -- 
+--- 
 
-### Comparative Evaluation
+### ⚖️ Comparison of Scoring Approaches
 
-- RAG-only  
+- Semantic similarity (RAG-only)  
 - Cross-encoder + RAG  
-- Hybrid (features + cross-encoder + RAG)  
+- Feature-based signals + Cross-encoder + RAG  
 
 ---
 
