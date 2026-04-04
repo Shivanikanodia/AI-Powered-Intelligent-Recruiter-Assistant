@@ -182,6 +182,18 @@ Candidate demonstrates strong alignment with the role, with hands-on experience 
 
 FAISS retrieves relevant sections and generates explainable insights using grounded prompts.
 
+CANDIDATE A:
+
+<img width="642" height="728" alt="Screenshot 2026-04-04 at 13 09 45" src="https://github.com/user-attachments/assets/26838bb7-fcdf-421b-8be3-14ca14e40a05" />
+
+
+
+CANDIDATE B:
+
+<img width="508" height="463" alt="Screenshot 2026-04-04 at 13 11 14" src="https://github.com/user-attachments/assets/4655240b-25bb-43a7-9338-eceb8dcf79b9" />
+
+
+
 ---
 
 ### Explainable Ranking Breakdown
