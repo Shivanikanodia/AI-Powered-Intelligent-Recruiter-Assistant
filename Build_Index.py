@@ -19,7 +19,6 @@ def build_index(resume_paths, out_dir="resume_index"):
         chunks = read_and_chunk_resume(rp)
         anon_chunks = [anonymize(c) for c in chunks]
 
-        # ✅ THIS LINE IS CRITICAL
         resume_meta[rp] = extract_metadata(" ".join(chunks))
 
         embs = model.encode(anon_chunks, normalize_embeddings=True)
@@ -45,7 +44,7 @@ def build_index(resume_paths, out_dir="resume_index"):
     with open(f"{out_dir}/chunk_meta.pkl", "wb") as f:
         pickle.dump(chunk_meta, f)
 
-    # ✅ THIS IS WHAT YOU ARE MISSING
+
     with open(f"{out_dir}/resume_meta.pkl", "wb") as f:
         pickle.dump(resume_meta, f)
 
