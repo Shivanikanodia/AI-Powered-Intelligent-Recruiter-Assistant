@@ -82,6 +82,19 @@ Structured features and cross-encoder outputs guide context-aware reasoning, all
 
 ---
 
+## 📁 Sample Data
+
+This repository includes a small set of anonymized sample resumes for demonstration purposes.
+
+- Located in `data/resumes/`  
+- No personally identifiable information (PII) is included  
+- Covers diverse roles (e.g., Data Analyst, Data Scientist, Business Analyst)  
+- Used for testing retrieval, ranking, and explainability  
+
+These samples help demonstrate how the system performs across different candidate profiles.
+
+---
+
 ## 🔍 Detailed Architecture
 
 ![Architecture](https://github.com/user-attachments/assets/63591997-881c-4c6c-9eb7-f5fdbe51bb12)
@@ -161,6 +174,32 @@ Structured features and cross-encoder outputs guide context-aware reasoning, all
 
 ---
 
+## 🔍 Example Results
+
+### Example 1: Data Analyst Query
+
+**Query:** Data analyst with Python, SQL, and Tableau experience  
+
+**Top Candidate:** Candidate A  
+- Experience: 3.5 years  
+- Domain: Analytics  
+
+#### Why this candidate?
+
+- Skill Match: 85%  
+- Experience Alignment: Strong  
+- Domain Match: High  
+- Seniority Fit: Mid-level  
+
+#### Evidence from Resume
+
+- "Built dashboards using Tableau and SQL for reporting"  
+- "Used Python for data analysis and automation"  
+
+#### Generated Summary
+
+Candidate demonstrates strong alignment with the role, with hands-on experience in SQL, Python, and Tableau. Their background in analytics and dashboard development makes them a strong fit.
+
 ### Retrieval + Reasoning Output
 
 FAISS retrieves relevant sections and generates explainable insights using grounded prompts.
@@ -217,35 +256,24 @@ The system is evaluated to measure retrieval quality, reasoning effectiveness, a
 
 ---
 
-## ▶️ Setup Instructions
+## ⚠️ Current Status
 
-### 1. Create Environment
+This project is a prototype and is still under development.  
 
-```bash
-conda create -n resume_rank python=3.10
-conda activate resume_rank
+Core components such as preprocessing, semantic retrieval, feature-based scoring, and ranking are implemented. However, the full pipeline is not yet fully packaged for reproducible end-to-end execution.
 
-### 2. Install Dependencies
-
-pip install -r requirements.txt
-Step 1: Build Index
-python build_index.py
-
-Step 2: Run Application
-ollama pull llama3
-ollama serve
-python -m streamlit run app.py
-
-🔍 Example Query
-
-Data analyst with Python, SQL, and Tableau experience
+This repository is intended to demonstrate:
+- system design and architecture  
+- hybrid retrieval and ranking approach  
+- explainable candidate scoring  
+- sample outputs and evaluation approach  
 
 
-🔮 Future Work
-Benchmark RAG vs Cross-Encoder vs Hybrid
-MLflow-based evaluation
-Role-specific prompts
-Responsible AI safeguards
+### 🔮 Future Work
+ Benchmark RAG vs Cross-Encoder vs Hybrid approaches  
+- MLflow-based evaluation and experiment tracking  
+- Role-specific prompt templates  
+- Responsible AI safeguards (bias checks, prompt injection handling)  
 
 📜 License
 
