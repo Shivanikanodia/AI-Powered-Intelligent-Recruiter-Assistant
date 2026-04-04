@@ -153,12 +153,6 @@ These samples help demonstrate how the system performs across different candidat
 
 ---
 
-### ⚖️ Comparison of Scoring Approaches
-
-- Semantic similarity (RAG-only)  
-- Cross-encoder + RAG  
-- Feature-based signals + Cross-encoder + RAG  
-
 **Custom weight templates:**
 
 - **Business Analyst** → Experience & impact prioritized  
