@@ -198,7 +198,10 @@ CANDIDATE B:
 
 ### Explainable Ranking Breakdown
 
-Shows why a candidate is ranked higher using structured features.
+Shows why a candidate A  is ranked higher then candidate B using structured features.
+
+<img width="1470" height="404" alt="image" src="https://github.com/user-attachments/assets/45bb6c40-1c98-48b9-99e9-01845edbb1a2" />
+
 
 ![Ranking](https://github.com/user-attachments/assets/5e1ddd26-2cd3-4e4c-9f0a-c9876d2e9fe4)
 
