@@ -61,18 +61,30 @@ These samples help demonstrate how the system performs across different candidat
 
 ### 🔍 Detailed Architecture
 
+<img width="1598" height="1500" alt="image" src="https://github.com/user-attachments/assets/689309a3-f9a1-4db2-993c-c3d28c04b4bf" />
+
+
+
+
 ### Phase 1: Offline Resume Processing & Indexing
 
-- Ingest resumes using pdfplumber and convert them into structured JSON
--Perform cleaning (whitespace normalization, formatting fixes, Unicode handling)
-- Detect key sections (Experience, Skills, Education)
-- Extract entities using spaCy and NLTK
-- Normalization & Ontology Mapping
-- Expand abbreviations and resolve synonyms
-- Map skills to a predefined ontology for consistent representation
-- Feature Engineering & Storage
-- Derive structured features: experience, domain, education, location
-- Store in Delta Live Tables with lineage tracking
+Ingest resumes using pdfplumber and convert them into structured JSON
+Perform cleaning (whitespace normalization, formatting fixes, Unicode handling)
+Detect key sections (Experience, Skills, Education)
+Extract entities using spaCy and NLTK
+
+<img width="646" height="456" alt="image" src="https://github.com/user-attachments/assets/7a09b0c7-b2a7-4913-b70b-7e4dda033ca8" />
+
+
+#### Normalization & Ontology Mapping
+
+Expand abbreviations and resolve synonyms
+Map skills to a predefined ontology for consistent representation
+
+#### Feature Engineering & Storage
+
+Derive structured features: experience, domain, education, location
+Store in Delta Live Tables with lineage tracking
 
 ### Phase 2: Embeddings & Retrieval Index
 Generate section-level embeddings using Sentence-BERT
