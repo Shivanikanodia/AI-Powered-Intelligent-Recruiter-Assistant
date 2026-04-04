@@ -168,19 +168,15 @@ These samples help demonstrate how the system performs across different candidat
 
 ## 🧪 Prototype
 
-### Recruiter Query Input
+### Query Input:
 
-![Query UI](https://github.com/user-attachments/assets/0eb1f3aa-7a62-44fe-8a75-a94c5ed2e13e)
+<img width="1838" height="1044" alt="image" src="https://github.com/user-attachments/assets/e2fcac7d-cf33-4801-a081-328ef6b73df6" />
 
 ---
 
-#### Generated Summary
+### Retrieval + Reasoning Output:
 
-Candidate demonstrates strong alignment with the role, with hands-on experience in SQL, Python, and Tableau. Their background in analytics and dashboard development makes them a strong fit.
-
-### Retrieval + Reasoning Output
-
-FAISS retrieves relevant sections and generates explainable insights using grounded prompts.
+FAISS retrieves relevant sections, computed features and generates explainable insights using grounded prompts.
 
 CANDIDATE A:
 
@@ -196,7 +192,7 @@ CANDIDATE B:
 
 ---
 
-### Explainable Ranking Breakdown
+### Explainable Ranking Breakdown:
 
 Shows why a candidate A  is ranked higher then candidate B using structured features.
 
