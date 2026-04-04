@@ -1,16 +1,16 @@
 
-#### AI-Powered Intelligent Recruiter Assistant
+### AI-Powered Intelligent Recruiter Assistant
 
 An explainable AI system for semantic resume matching and recruiter-facing candidate ranking, designed to reduce manual screening time and improve candidate discovery beyond traditional ATS systems.
 
-#### 🚀 Business Problem
+### 🚀 Business Problem
 Keyword-based ATS systems fail to capture semantic relevance
 Lack of transparent ranking makes candidate evaluation unclear
 Recruiters spend significant time manually reviewing resumes
 Skill gaps and contextual fit require manual interpretation
 Limited support for recruiter-driven analytics and insights
 
-#### 💡 Solution Overview
+### 💡 Solution Overview
 
 This system transforms unstructured resume data into structured, queryable metadata using NLP techniques, enabling consistent processing across diverse formats.
 
@@ -18,13 +18,13 @@ It leverages semantic retrieval and hybrid ranking to identify the most relevant
 
 The platform also supports natural language queries and generates grounded, evidence-based summaries to help recruiters quickly assess candidate fit.
 
-#### 💼 Business Impact
+### 💼 Business Impact
 ⏱️ Significantly reduces resume screening time
 🎯 Improves candidate quality through context-aware matching
 📈 Scales efficiently across large candidate datasets
 🤝 Enhances recruiter decision-making with transparent insights
 
-#### 🧠 How It Works (High-Level)
+### 🧠 How It Works (High-Level)
 
 - Recruiter submits a natural language query
 - Query is converted into embeddings for semantic search
@@ -36,7 +36,7 @@ The platform also supports natural language queries and generates grounded, evid
 
 ---
 
-## Project Structure
+### Project Structure
 
 - `app.py` - Streamlit application for recruiter query input, retrieval, ranking, and summary generation  
 - `preprocessing.py` - Resume cleaning, parsing, section detection, and metadata extraction  
@@ -46,7 +46,7 @@ The platform also supports natural language queries and generates grounded, evid
 
 ---
 
-## 📁 Sample Data
+### 📁 Sample Data
 
 This repository includes a small set of anonymized sample resumes for demonstration purposes.
 
@@ -79,12 +79,14 @@ Generate section-level embeddings using Sentence-BERT
 Store embeddings in FAISS for efficient similarity search
 
 ### Phase 3: Online Retrieval & Ranking
+
 #### 🔍 Retrieval
 Convert recruiter query into embeddings
 Retrieve top-N relevant resume sections from FAISS
 Aggregate section-level matches into resume-level relevance scores
 
 #### 🧠 Scoring & Re-Ranking
+
 Compute structured feature scores:
 
 Skill overlap
@@ -100,7 +102,7 @@ Gap penalties
 ###### Data Scientist → Higher weight on technical skills and domain expertise
 ---
 
-## 🧪 Prototype
+### 🧪 Prototype
 
 ### Query Input:
 
@@ -137,7 +139,7 @@ Shows why a candidate A  is ranked higher then candidate B using structured feat
 
 ---
 
-## 🔎 Explainability & Transparency
+### 🔎 Explainability & Transparency
 
 - Displays contribution of each feature  
 - Shows why one candidate ranks higher than another  
@@ -146,7 +148,7 @@ Shows why a candidate A  is ranked higher then candidate B using structured feat
 
 ---
 
-## 📊 Evaluation Metrics:
+### 📊 Evaluation Metrics:
 
 The system was evaluated across latency, ranking quality, and reliability.
 
@@ -157,7 +159,7 @@ The system was evaluated across latency, ranking quality, and reliability.
 
 <img width="507" height="160" alt="Screenshot 2026-04-03 at 19 55 18" src="https://github.com/user-attachments/assets/35539c2a-8516-4cec-851b-cd1e26d180f1" />
 
-### Notes
+#### Notes
 
 - Relevance Score represents the semantic similarity between query and retrieved candidates after ranking  
 - Low error rate indicates stable pipeline execution  
@@ -173,7 +175,7 @@ The system was evaluated across latency, ranking quality, and reliability.
 
 ---
 
-## 🛠️ Tech Stack
+### 🛠️ Tech Stack
 
 - Python 3.10  
 - FAISS  
@@ -187,7 +189,7 @@ The system was evaluated across latency, ranking quality, and reliability.
 
 ---
 
-## ⚠️ Current Status
+### ⚠️ Current Status
 
 This project is a prototype and is still under development.  
 
