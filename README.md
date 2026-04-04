@@ -174,28 +174,6 @@ These samples help demonstrate how the system performs across different candidat
 
 ---
 
-## 🔍 Example Results
-
-### Example 1: Data Analyst Query
-
-**Query:** Data analyst with Python, SQL, and Tableau experience  
-
-**Top Candidate:** Candidate A  
-- Experience: 3.5 years  
-- Domain: Analytics  
-
-#### Why this candidate?
-
-- Skill Match: 85%  
-- Experience Alignment: Strong  
-- Domain Match: High  
-- Seniority Fit: Mid-level  
-
-#### Evidence from Resume
-
-- "Built dashboards using Tableau and SQL for reporting"  
-- "Used Python for data analysis and automation"  
-
 #### Generated Summary
 
 Candidate demonstrates strong alignment with the role, with hands-on experience in SQL, Python, and Tableau. Their background in analytics and dashboard development makes them a strong fit.
