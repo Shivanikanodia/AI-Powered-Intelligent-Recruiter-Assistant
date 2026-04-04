@@ -93,9 +93,10 @@ Seniority fit
 Gap penalties
 
 
-🎯 Role-Specific Weighting
-Business Analyst → Higher weight on experience and business impact
-Data Scientist → Higher weight on technical skills and domain expertise
+##### 🎯 Role-Specific Weighting
+
+###### Business Analyst → Higher weight on experience and business impact
+###### Data Scientist → Higher weight on technical skills and domain expertise
 ---
 
 ## 🧪 Prototype
