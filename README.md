@@ -182,8 +182,6 @@ Candidate demonstrates strong alignment with the role, with hands-on experience 
 
 FAISS retrieves relevant sections and generates explainable insights using grounded prompts.
 
-![Output](https://github.com/user-attachments/assets/8435cd3b-e120-4b05-956b-58ebdfc02cf4)
-
 ---
 
 ### Explainable Ranking Breakdown
