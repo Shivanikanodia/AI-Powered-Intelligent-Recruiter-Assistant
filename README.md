@@ -225,14 +225,24 @@ Shows why a candidate is ranked higher using structured features.
 
 ---
 
-## 📊 Evaluation Metrics
+## 📊 Evaluation Metrics:
 
-The system is evaluated to measure retrieval quality, reasoning effectiveness, and ranking performance:
+The system was evaluated across latency, ranking quality, and reliability.
 
-- Precision@K / Recall@K / NDCG@K  
-- Reduction in false positives  
-- Latency across pipeline stages  
-- Consistency and hallucination checks  
+- Latency across pipeline stages
+- Relevance Score
+- Precision@K / Recall@K  
+- Consistency and hallucination checks
+
+<img width="507" height="160" alt="Screenshot 2026-04-03 at 19 55 18" src="https://github.com/user-attachments/assets/35539c2a-8516-4cec-851b-cd1e26d180f1" />
+
+### Notes
+
+- **Relevance Score** represents the semantic similarity between query and retrieved candidates after ranking  
+- Low error rate indicates stable pipeline execution  
+- Latency includes retrieval, re-ranking, and summary generation
+
+- -- 
 
 ### Comparative Evaluation
 
