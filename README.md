@@ -72,6 +72,16 @@ Structured features and cross-encoder outputs guide context-aware reasoning, all
 
 ---
 
+## Project Structure
+
+- `app.py` - Streamlit application for recruiter query input, retrieval, ranking, and summary generation  
+- `preprocessing.py` - Resume cleaning, parsing, section detection, and metadata extraction  
+- `build_index.py` - Offline pipeline to generate embeddings and build the FAISS index  
+- `config.py` - Model configuration, file paths, and scoring parameters  
+- `resume_index/` - Stored FAISS index and metadata artifacts
+
+---
+
 ## 🔍 Detailed Architecture
 
 ![Architecture](https://github.com/user-attachments/assets/63591997-881c-4c6c-9eb7-f5fdbe51bb12)
