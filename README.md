@@ -25,13 +25,14 @@ The platform also supports natural language queries and generates grounded, evid
 🤝 Enhances recruiter decision-making with transparent insights
 
 #### 🧠 How It Works (High-Level)
-Recruiter submits a natural language query
-Query is converted into embeddings for semantic search
-Relevant resume sections are retrieved using FAISS
-Section-level results are aggregated to compute resume-level relevance
-Structured feature scoring evaluates candidate fit across key dimensions
-Cross-encoder re-ranks top candidates for improved precision
-Controlled LLM generates concise, evidence-based candidate summaries
+
+- Recruiter submits a natural language query
+- Query is converted into embeddings for semantic search
+- Relevant resume sections are retrieved using FAISS
+- Section-level results are aggregated to compute resume-level relevance
+- Structured feature scoring evaluates candidate fit across key dimensions
+- Cross-encoder re-ranks top candidates for improved precision
+- Controlled LLM generates concise, evidence-based candidate summaries
 
 ---
 
