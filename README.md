@@ -137,10 +137,9 @@ CANDIDATE B:
 <img width="508" height="463" alt="Screenshot 2026-04-04 at 13 11 14" src="https://github.com/user-attachments/assets/4655240b-25bb-43a7-9338-eceb8dcf79b9" />
 
 
-<img width="321" height="258" alt="Screenshot 2026-04-19 at 18 57 47" src="https://github.com/user-attachments/assets/b3d5c809-e86a-4ae8-ba74-f49f512c960d" />
-
-
 <img width="293" height="250" alt="Screenshot 2026-04-19 at 18 57 55" src="https://github.com/user-attachments/assets/93535f27-5451-4b4a-b004-87ede066d55b" />
+
+<img width="321" height="258" alt="Screenshot 2026-04-19 at 18 57 47" src="https://github.com/user-attachments/assets/b3d5c809-e86a-4ae8-ba74-f49f512c960d" />
 
 
 ---
