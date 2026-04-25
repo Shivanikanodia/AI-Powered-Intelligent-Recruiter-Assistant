@@ -122,31 +122,10 @@ Gap penalties
 
 ---
 
-### Retrieval + Reasoning Output:
+### Retrieval + Reasoning and explanable ranking Output:
 
 FAISS retrieves relevant sections, computed features and generates explainable insights using grounded prompts.
 
-CANDIDATE A:
-
-<img width="642" height="728" alt="Screenshot 2026-04-04 at 13 09 45" src="https://github.com/user-attachments/assets/26838bb7-fcdf-421b-8be3-14ca14e40a05" />
-
-
-CANDIDATE B:
-
-<img width="508" height="463" alt="Screenshot 2026-04-04 at 13 11 14" src="https://github.com/user-attachments/assets/4655240b-25bb-43a7-9338-eceb8dcf79b9" />
-
-
-
-<img width="293" height="250" alt="Screenshot 2026-04-19 at 18 57 55" src="https://github.com/user-attachments/assets/93535f27-5451-4b4a-b004-87ede066d55b" />
-
-<img width="321" height="258" alt="Screenshot 2026-04-19 at 18 57 47" src="https://github.com/user-attachments/assets/b3d5c809-e86a-4ae8-ba74-f49f512c960d" />
-
-
----
-
-### Explainable Ranking Breakdown:
-
-Shows why a candidate A  is ranked higher then candidate B using structured features.
 
 <img width="1470" height="404" alt="image" src="https://github.com/user-attachments/assets/45bb6c40-1c98-48b9-99e9-01845edbb1a2" />
 
