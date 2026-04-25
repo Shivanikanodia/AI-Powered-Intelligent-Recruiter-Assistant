@@ -131,10 +131,10 @@ CANDIDATE A:
 <img width="642" height="728" alt="Screenshot 2026-04-04 at 13 09 45" src="https://github.com/user-attachments/assets/26838bb7-fcdf-421b-8be3-14ca14e40a05" />
 
 
-
 CANDIDATE B:
 
 <img width="508" height="463" alt="Screenshot 2026-04-04 at 13 11 14" src="https://github.com/user-attachments/assets/4655240b-25bb-43a7-9338-eceb8dcf79b9" />
+
 
 
 <img width="293" height="250" alt="Screenshot 2026-04-19 at 18 57 55" src="https://github.com/user-attachments/assets/93535f27-5451-4b4a-b004-87ede066d55b" />
@@ -150,8 +150,9 @@ Shows why a candidate A  is ranked higher then candidate B using structured feat
 
 <img width="1470" height="404" alt="image" src="https://github.com/user-attachments/assets/45bb6c40-1c98-48b9-99e9-01845edbb1a2" />
 
-
 ![Ranking](https://github.com/user-attachments/assets/5e1ddd26-2cd3-4e4c-9f0a-c9876d2e9fe4)
+
+<img width="598" height="507" alt="Screenshot 2026-04-24 at 17 06 26" src="https://github.com/user-attachments/assets/417ee2c5-df2b-4b3e-9c37-f44211e67d00" />
 
 ---
 
@@ -187,7 +188,12 @@ The system was evaluated across latency, ranking quality, and reliability.
 
 - Semantic similarity (RAG-only)  
 - Cross-encoder + RAG  
-- Feature-based signals + Cross-encoder + RAG  
+- Feature-based signals + Cross-encoder + RAG
+
+<img width="838" height="368" alt="Screenshot 2026-04-24 at 17 03 33" src="https://github.com/user-attachments/assets/3bd354df-0d4e-401a-ad8c-b4149f36e053" />
+
+<img width="861" height="446" alt="Screenshot 2026-04-24 at 17 03 44" src="https://github.com/user-attachments/assets/71dc0f2d-0822-47aa-be2f-679ede81d0c4" />
+
 
 ---
 
