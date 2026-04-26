@@ -57,13 +57,13 @@ These samples help demonstrate how the system performs across different candidat
 
 ---
 
-### 🔍 Detailed Architecture
-
-<img width="1598" height="1500" alt="image" src="https://github.com/user-attachments/assets/689309a3-f9a1-4db2-993c-c3d28c04b4bf" />
+### 🔍 Data Pipeline Architecture:
 
 
+<img width="843" height="439" alt="Screenshot 2026-04-26 at 13 49 02" src="https://github.com/user-attachments/assets/23d05169-5299-40b8-8b1b-4c24850b2b70" />
 
-### Phase 1: Resume Processing & Indexing
+
+### Phase 1: Resume Processing & Indexing:
 
 The pipeline transforms unstructured resume PDFs into structured data using Databricks AI functions.
 
@@ -103,23 +103,16 @@ Gap penalties
 
 #### PHASE 4: RE-RANKING:
 
+Deep model: evaluates query + resume together
+Captures contextual meaning
+Improves precision (better ordering)
+
 
 ### 🧪 Prototype
 
-### Query Input:
 
-<img width="1838" height="1044" alt="image" src="https://github.com/user-attachments/assets/e2fcac7d-cf33-4801-a081-328ef6b73df6" />
+### Reasoning and explianable ranking Output:
 
----
-
-### Retrieval + Reasoning and explanable ranking Output:
-
-FAISS retrieves relevant sections, computed features and generates explainable insights using grounded prompts.
-
-
-<img width="1470" height="404" alt="image" src="https://github.com/user-attachments/assets/45bb6c40-1c98-48b9-99e9-01845edbb1a2" />
-
-![Ranking](https://github.com/user-attachments/assets/5e1ddd26-2cd3-4e4c-9f0a-c9876d2e9fe4)
 
 <img width="598" height="507" alt="Screenshot 2026-04-24 at 17 06 26" src="https://github.com/user-attachments/assets/417ee2c5-df2b-4b3e-9c37-f44211e67d00" />
 
