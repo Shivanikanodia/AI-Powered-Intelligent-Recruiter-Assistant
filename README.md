@@ -95,11 +95,11 @@ Aggregate section-level matches into resume-level relevance scores
 
 Compute structured feature scores:
 
-Skill overlap
-Experience alignment
-Domain relevance
-Seniority fit
-Gap penalties
+- Skill overlap
+- Experience alignment
+- Domain relevance
+- Seniority fit
+- Gaps
 
 ### PHASE 4: RE-RANKING:
 
