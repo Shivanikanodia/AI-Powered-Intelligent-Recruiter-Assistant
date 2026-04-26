@@ -67,17 +67,20 @@ These samples help demonstrate how the system performs across different candidat
 
 The pipeline transforms unstructured resume PDFs into structured data using Databricks AI functions.
 
-Ingestion: Resumes are read from a Unity Catalog Volume using read_files.
-Parsing: ai_parse_document converts PDFs into structured JSON while preserving layout.
-Extraction: ai_extract (2-pass approach) extracts contact details and detailed profile information (skills, experience, education).
-Modeling: Data is flattened into tables (resume_core, resume_skills, resume_experience, resume_education) using explode() for efficient querying and lineage.****
-Perform cleaning (whitespace normalization, formatting fixes, Unicode handling)
+- Ingestion: Resumes are read from a Unity Catalog Volume using read_files.
+
+- Parsing: ai_parse_document converts PDFs into structured JSON while preserving layout.
+  
+- Extraction: ai_extract (2-pass approach) extracts contact details and detailed profile information (skills, experience, education).
+- 
+- Modeling: Data is flattened into tables (resume_core, resume_skills, resume_experience, resume_education) using explode() for efficient querying and lineage.****
+  
+- Cleaning: (whitespace normalization, formatting fixes, Unicode handling)
 n)
 
-#### Normalization & Ontology Mapping
-
-Synonyms : Saved data is expanded using abbreviations and matched with synonyms for consistent matching 
-Mapping : Map skills and tittles to a predefined ontology dictionary for consistent representation.
+- Synonyms : Saved data is expanded using abbreviations and matched with synonyms for consistent matching
+  
+- Mapping : Map skills and tittles to a predefined ontology dictionary for consistent representation.
 
 
 ### Phase 2: Embeddings & Retrieval Index
