@@ -1,18 +1,17 @@
 
 ### AI-Powered Intelligent Recruiter Assistant
 
-An explainable AI system for semantic resume matching and recruiter-facing candidate ranking, designed to reduce manual screening time and improve candidate discovery beyond traditional ATS systems.
+An explainable AI system for semantic resume matching and recruiter-facing candidate ranking and insights , designed to reduce manual screening time, keyword based bias and improve candidate discovery.
 
 ### 🚀 Business Problem
-Keyword-based ATS systems fail to capture semantic relevance
+Keyword based ATS systems fail to capture semantic relevance
 Lack of transparent ranking makes candidate evaluation unclear
 Recruiters spend significant time manually reviewing resumes
-Skill gaps and contextual fit require manual interpretation
 Limited support for recruiter-driven analytics and insights
 
-### 💡 Solution Overview
+### 💡 Solution Overview: 
 
-This system transforms unstructured resume data into structured, queryable metadata using NLP techniques, enabling consistent processing across diverse formats.
+This system transforms unstructured resume data into structured, querying data using Databricks AI functions and SQL( AI_Parse_document and AI_Extract), enabling consistent processing across diverse formats.
 
 It leverages semantic retrieval and hybrid ranking to identify the most relevant candidates. By combining embedding-based search with structured feature scoring and re-ranking, the system evaluates candidates on skills, experience, domain alignment, and seniority.
 
@@ -32,7 +31,7 @@ The platform also supports natural language queries and generates grounded, evid
 - Section-level results are aggregated to compute resume-level relevance
 - Structured feature scoring evaluates candidate fit across key dimensions
 - Cross-encoder re-ranks top candidates for improved precision
-- Controlled LLM generates concise, evidence-based candidate summaries
+- Controlled LLM generates concise, evidence based candidate summaries
 
 ---
 
@@ -50,8 +49,7 @@ The platform also supports natural language queries and generates grounded, evid
 
 This repository includes a small set of anonymized sample resumes for demonstration purposes.
 
-- Located in `data/resumes/`  
-- No personally identifiable information (PII) is included  
+- Located in `data/resumes/`    
 - Covers diverse roles (e.g., Data Analyst, Data Scientist, Business Analyst)  
 - Used for testing retrieval, ranking, and explainability  
 
@@ -65,32 +63,28 @@ These samples help demonstrate how the system performs across different candidat
 
 
 
+### Phase 1: Resume Processing & Indexing
 
-### Phase 1: Offline Resume Processing & Indexing
+The pipeline transforms unstructured resume PDFs into structured data using Databricks AI functions.
 
-Ingest resumes using pdfplumber and convert them into structured JSON
+Ingestion: Resumes are read from a Unity Catalog Volume using read_files.
+Parsing: ai_parse_document converts PDFs into structured JSON while preserving layout.
+Extraction: ai_extract (2-pass approach) extracts contact details and detailed profile information (skills, experience, education).
+Modeling: Data is flattened into tables (resume_core, resume_skills, resume_experience, resume_education) using explode() for efficient querying and lineage.****
 Perform cleaning (whitespace normalization, formatting fixes, Unicode handling)
-Detect key sections (Experience, Skills, Education)
-Extract entities using spaCy and NLTK
-
-<img width="646" height="456" alt="image" src="https://github.com/user-attachments/assets/7a09b0c7-b2a7-4913-b70b-7e4dda033ca8" />
-
+n)
 
 #### Normalization & Ontology Mapping
 
-Expand abbreviations and resolve synonyms
-Map skills to a predefined ontology for consistent representation
+Synonyms : Saved data is expanded using abbreviations and matched with synonyms for consistent matching 
+Mapping : Map skills and tittles to a predefined ontology dictionary for consistent representation.
 
-#### Feature Engineering & Storage
-
-Derive structured features: experience, domain, education, location
-Store in Delta Live Tables with lineage tracking
 
 ### Phase 2: Embeddings & Retrieval Index
 Generate section-level embeddings using Sentence-BERT
 Store embeddings in FAISS for efficient similarity search
 
-### Phase 3: Online Retrieval & Ranking
+### Phase 3: ONLINE RETRIEVAL:
 
 #### 🔍 Retrieval
 Convert recruiter query into embeddings
@@ -107,12 +101,8 @@ Domain relevance
 Seniority fit
 Gap penalties
 
+#### PHASE 4: RE-RANKING:
 
-##### 🎯 Role-Specific Weighting
-
-###### Business Analyst → Higher weight on experience and business impact
-###### Data Scientist → Higher weight on technical skills and domain expertise
----
 
 ### 🧪 Prototype
 
