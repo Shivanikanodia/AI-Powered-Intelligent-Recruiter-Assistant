@@ -72,7 +72,7 @@ The pipeline transforms unstructured resume PDFs into structured data using Data
 - Parsing: ai_parse_document converts PDFs into structured JSON while preserving layout.
   
 - Extraction: ai_extract (2-pass approach) extracts contact details and detailed profile information (skills, experience, education).
-- 
+  
 - Modeling: Data is flattened into tables (resume_core, resume_skills, resume_experience, resume_education) using explode() for efficient querying and lineage.****
   
 - Cleaning: (whitespace normalization, formatting fixes, Unicode handling)
