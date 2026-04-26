@@ -84,7 +84,7 @@ Mapping : Map skills and tittles to a predefined ontology dictionary for consist
 Generate section-level embeddings using Sentence-BERT
 Store embeddings in FAISS for efficient similarity search
 
-### Phase 3: ONLINE RETRIEVAL:
+### Phase 3: Online Retrieval:
 
 #### 🔍 Retrieval
 Convert recruiter query into embeddings
@@ -101,7 +101,7 @@ Domain relevance
 Seniority fit
 Gap penalties
 
-#### PHASE 4: RE-RANKING:
+### PHASE 4: RE-RANKING:
 
 Deep model: evaluates query + resume together
 Captures contextual meaning
